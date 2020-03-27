@@ -1,5 +1,7 @@
 $(document).ready(init);
 
+let problemString = "";
+
 function init() {
   console.log("In init");
   $(".btn_equals").on("click", compute);
@@ -10,6 +12,7 @@ function init() {
 
 function clearField() {
   console.log("In clear");
+  $(".input_box").val("");
 }
 
 function compute() {
@@ -17,11 +20,17 @@ function compute() {
 }
 
 function numEntry() {
-  let thisNumber = $(this).data("index");
+  let thisNumber = $(this)
+    .data("index")
+    .toString();
   console.log(thisNumber);
+  problemString = problemString + thisNumber;
+  $(".input_box").val(problemString);
 }
 
 function operatorEntry() {
   let operator = $(this).data("index");
   console.log(operator);
+  problemString = problemString + operator;
+  $(".input_box").val(problemString);
 }
