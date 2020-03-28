@@ -1,10 +1,11 @@
 $(document).ready(init);
 
 let problemString = "";
+let answer = 0;
 
 function init() {
   console.log("In init");
-  $(".btn_equals").on("click", compute);
+  $(".btn_equals").on("click", saveMathNumber);
   $(".num").on("click", numEntry);
   $(".operator").on("click", operatorEntry);
   $(".btn_clear").on("click", clearField);
@@ -13,10 +14,23 @@ function init() {
 function clearField() {
   console.log("In clear");
   $(".input_box").val("");
+  problemString = "";
 }
 
 function compute() {
-  console.log("Calculating");
+  //   $.ajax({
+  //     // .ajax() returns a Promise
+  //     method: "GET",
+  //     url: "/compute"
+  //   })
+  //     .then(response => {
+  //       console.log(response);
+  //       answer = response;
+  //       //  CALL RENDER
+  //     }) // handles a successful response
+  //     .catch(err => {
+  //       console.log(err);
+  //     }); // catch handles errors
 }
 
 function numEntry() {
