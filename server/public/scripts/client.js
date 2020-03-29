@@ -51,7 +51,13 @@ function operatorEntry() {
 
 function render() {
   console.log("in render");
-  console.log(answer);
+  let thisAnswer = answer[answer.length - 1];
+  console.log(thisAnswer);
+
+  $(".input_box").val("");
+  problemString.number = "";
+  $(".answer").empty();
+  $(".answer").append(`${thisAnswer.problem} = ${thisAnswer.answer}`);
 }
 
 function saveMathNumber(mathData) {
