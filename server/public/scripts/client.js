@@ -57,7 +57,16 @@ function render() {
   $(".input_box").val("");
   problemString.number = "";
   $(".answer").empty();
+  $(".history_list").empty();
   $(".answer").append(`${thisAnswer.problem} = ${thisAnswer.answer}`);
+
+  for (let i = 0; i < answer.length; i++) {
+    const answerItem = answer[i];
+
+    $(".history_list").append(`
+      <p>${answerItem.problem} = ${answerItem.answer}</p>
+    `);
+  }
 }
 
 function saveMathNumber(mathData) {
