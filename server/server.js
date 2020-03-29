@@ -18,9 +18,13 @@ app.get("/math", (req, res) => {
 
 app.post("/math", (req, res) => {
   const newEquation = req.body;
+  const mathAnswer = {
+    problem: newEquation.number,
+    answer: eval(newEquation.number)
+  };
+  console.log("new Equation: ", mathAnswer);
+  newProblem.push(mathAnswer);
 
-  console.log("new Equation: ", newEquation);
-  newProblem.push(newEquation);
   res.sendStatus(201);
 });
 
