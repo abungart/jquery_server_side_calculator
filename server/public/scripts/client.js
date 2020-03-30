@@ -9,6 +9,7 @@ function init() {
   $(".num").on("click", numEntry);
   $(".operator").on("click", operatorEntry);
   $(".btn_clear").on("click", clearField);
+  $(".btn_delete").on("click", deleteItem);
 }
 
 function clearField() {
@@ -33,6 +34,14 @@ function compute() {
     }); // catch handles errors
 }
 
+function deleteItem() {
+  problemString.number = problemString.number.slice(
+    0,
+    problemString.number.length - 1
+  );
+  $(".input_box").val(problemString.number);
+}
+
 function numEntry() {
   let thisNumber = $(this)
     .data("index")
@@ -40,6 +49,7 @@ function numEntry() {
   console.log(thisNumber);
   problemString.number = problemString.number + thisNumber;
   $(".input_box").val(problemString.number);
+  $(".operator").removeAttr("disabled");
 }
 
 function operatorEntry() {
@@ -47,6 +57,7 @@ function operatorEntry() {
   console.log(operator);
   problemString.number = problemString.number + operator;
   $(".input_box").val(problemString.number);
+  $(".operator").attr("disabled", true);
 }
 
 function render() {
@@ -86,6 +97,15 @@ function saveMathNumber(mathData) {
 }
 
 function submitMathNumber() {
-  console.log("in Submit");
-  saveMathNumber(problemString);
+  if (
+    problemString.number.includes("+") ||
+    problemString.number.includes("-") ||
+    problemString.number.includes("*") ||
+    problemString.number.includes("/")
+  ) {
+    console.log("in Submit");
+    saveMathNumber(problemString);
+  } else {
+    alert("Not an Equation!");
+  }
 }
